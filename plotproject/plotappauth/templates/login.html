@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<div class="page-heading">
+	<div class="container">
+	  <div class="row">
+		<div class="col-lg-8">
+		  <div class="top-text header-text">
+			<h6>LOGIN</h6>
+			<h2>Login in our website to explore different types of plots</h2>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+
+
+
+<body class="templatemo-bg-gray">
+	<div class="container">
+		<div class="col-lg-6 align-self-center">
+			<form id="contact" action="" method="POST">
+			  {% csrf_token %}
+			  <div class="row">
+				  {{form.as_p}}
+				 <div class="form-group">
+						  <div class="col-md-12">
+							 <div class="checkbox control-wrapper">
+								<label>
+									  <input type="checkbox"> Remember me
+								</label>
+							  </div>
+						  </div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-12">
+								<div class="control-wrapper">
+									<div class="col-lg-12">
+										<fieldset>
+										  <button type="submit" id="form-submit" value= "Log In"><i class="fa fa-paper-plane"></i> Log In </button>
+										  <a href="{% url 'changepassword' %}" class="text-right pull-right">Forgot password?<p>Reset It</p></a>
+									  </fieldset>
+									  </div>
+								</div>
+							</div>
+						  </div>
+
+
+			  </div>
+
+			</form>
+			<hr>
+		  </div>
+
+
+
+	</div>
+	<div class="text-center">
+		<a href="{% url 'signup' %}" class="templatemo-create-new">Create new account <i class="fa fa-arrow-circle-o-right"></i></a>
+	  </div>
+</body>
+
+
+
+{% endblock content %}

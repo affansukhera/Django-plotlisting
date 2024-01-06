@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+
+
+
+<div class="page-heading">
+	<div class="container">
+	  <div class="row">
+		<div class="col-lg-8">
+		  <div class="top-text header-text">
+			<h6>Add new Account</h6>
+			<h2>If you don't have account yet then Create a new one to explore plots</h2>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+
+
+	<div class="container">
+		<div class="col-lg-6 align-self-center">
+			<form id="contact" action="" method="POST">
+			  {% csrf_token %}
+			  <div class="row">
+				  {{form.as_p}}
+				  <div class="form-group">
+				  <div class="col-md-12">
+				<div class="col-lg-12">
+				  <fieldset>
+					<button type="submit" id="form-submit" value= "Create Account" class= "main-button "><i class="fa fa-paper-plane"></i> Create Account </button>
+
+
+					<a href="{% url 'login' %}" class="pull-right"><p>Already Signed Up?</p>Login</a>
+				  </fieldset>
+				</div>
+				</div>
+				</div>
+			  </div>
+			</form>
+		  </div>
+	</div>
+
+
+{% endblock content %}

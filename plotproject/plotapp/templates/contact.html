@@ -1,0 +1,50 @@
+{% extends  'index.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="page-heading">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="top-text header-text">
+          <h6>Keep in touch with us</h6>
+          <h2>Feel free to send us a message about your business needs</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="contact-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="inner-content">
+          <div class="row">
+            <div class="col-lg-6">
+              <div id="map">
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6952.671676332315!2d71.71261799999999!3d29.3897301!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393b91c866914697%3A0xe58907dce2ee1358!2sEnigmatix%20(Pvt)%20Ltd!5e0!3m2!1sen!2s!4v1698148555889!5m2!1sen!2s" width="100%" height="650px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>              </div>
+            </div>
+            <div class="col-lg-6 align-self-center">
+              <form id="contact" action="" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    {{form.as_p}}
+
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <button type="submit" id="form-submit" class="main-button "><i class="fa fa-paper-plane"></i> Send Message</button>
+                    </fieldset>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

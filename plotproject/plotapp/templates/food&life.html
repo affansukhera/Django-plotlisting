@@ -1,0 +1,83 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<div class="page-heading">
+	<div class="container">
+	  <div class="row">
+		<div class="col-lg-8">
+		  <div class="top-text header-text">
+			<h6>Food&Life View</h6>
+			<h2>Here you will get to know about different available foods according to your desire</h2>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+  <div class="recent-listing">
+      <style>
+      .listing_image {
+        max-height: 30vw;
+        min-height: 30vw;
+        max-width:30vw;
+        min-width: 30vw;
+      }
+    </style>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-heading">
+            <h2>Recent Listing</h2>
+            <h6>Check Them Out</h6>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="owl-carousel owl-listing">
+
+            {% for listing in foodandlifelistings %}
+              {% if forloop.counter0|divisibleby:3 %}
+                <div class="item">
+              {% endif %}
+              <div class="listing-item">
+                <div class="left-image">
+                  <a href="#"><img src="{{ listing.image.url }}" alt="" class="listing_image" height="380px"></a>
+                </div>
+                <div class="right-content align-self-center">
+                  <a href="#"><h4>{{ listing.id }}. {{ listing.title }}</h4></a>
+                  <h6>By: {{ listing.listing_type }}</h6>
+                  <ul class="rate">
+                    <li><i class="fa fa-star-o"></i></li>
+                    <li><i class="fa fa-star-o"></i></li>
+                    <li><i class="fa fa-star-o"></i></li>
+                    <li><i class="fa fa-star-o"></i></li>
+                    <li><i class="fa fa-star-o"></i></li>
+                    <li>({{ listing.reviews }}) Reviews</li>
+                  </ul>
+                  <span class="price">
+                    <div class="icon">
+                      <img src="{% static 'images/listing-icon-01.png' %}" alt="">
+                    </div> ${{ listing.price }} / month with taxes
+                  </span>
+                  <span class="details">Details: <em>{{ listing.details }}</em></span>
+                  <div class="main-white-button">
+                    <a href="{% url 'ContactForm' %}"><i class="fa fa-eye"></i> Contact Now</a>
+                  </div>
+                </div>
+              </div>
+              {% if forloop.counter|divisibleby:3 %}
+                </div>
+              {% endif %}
+            {% endfor %}
+        </div>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+{% endblock content %}

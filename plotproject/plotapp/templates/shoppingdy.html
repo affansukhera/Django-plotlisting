@@ -1,0 +1,145 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<div class="page-heading">
+	<div class="container">
+	  <div class="row">
+		<div class="col-lg-8">
+		  <div class="top-text header-text">
+			<h6>Shopping View</h6>
+			<h2>Here you will get the list of shopping items that you will be availed to buy</h2>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+<div class="recent-listing">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-heading">
+          <h2>Recent Listing</h2>
+          <h6>Check Them Out</h6>
+        </div>
+      </div>
+        <div class="listing-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="naccs">
+          <div class="grid">
+            <div class="row">
+              <div class="col-lg-3">
+
+                <div class="menu">
+                  <a href="{% url 'appartements' %}">
+
+                  <div class="first-thumb">
+                    <div class="thumb">
+                      <span class="icon"><img src="{% static 'images/search-icon-01.png' %}" alt=""></span>
+                      Apartments
+                    </div>
+                  </div>
+                  </a>
+                  <a href="{% url 'food&lifelisting' %}">
+                  <div>
+                    <div class="thumb">
+                      <span class="icon"><img src="{% static 'images/search-icon-02.png' %}" alt=""></span>
+                      Food & Life
+                    </div>
+                  </div>
+                  </a>
+                  <a href="{% url 'carslisting' %}">
+                  <div>
+                    <div class="thumb">
+                      <span class="icon"><img src="{% static 'images/search-icon-03.png' %}" alt=""></span>
+                      Cars
+                    </div>
+
+                  </div>
+                  </a>
+                  <a href="{% url 'travellinglisting' %}">
+                  <div>
+                    <div class="thumb">
+                      <span class="icon"><img src="{% static 'images/search-icon-04.png' %}" alt=""></span>
+                      Traveling
+                    </div>
+                  </div>
+                  </a>
+                  <a href="{% url 'shoppinglisting' %}">
+                    <div class="last-thumb active">
+                      <div class="thumb active">
+                        <span class="icon"><img src="{% static 'images/search-icon-04.png' %}" alt=""></span>
+                        Shopping
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+                <div class="col-lg-9">
+                  <style>
+                      .listing_image {
+                                       max-height: 30vw;
+                                       min-height: 30vw;
+                                       max-width:30vw;
+                                       min-width: 30vw;
+                                        }
+                 </style>
+                <ul class="nacc">
+                  <li class="active">
+                    <div>
+                      <div class="col-lg-12">
+                      <div class="owl-carousel owl-listing">
+                        {% for listing in shoppinglistings %}
+                          {% if forloop.counter0|divisibleby:3 %}
+                            <div class="item">
+                          {% endif %}
+                          <div class="listing-item">
+                            <div class="left-image">
+                              <a href="#"><img src="{{ listing.image.url }}" alt="" class="listing_image" height="380px"></a>
+                            </div>
+                            <div class="right-content align-self-center">
+                              <a href="#"><h4>{{ listing.id }}. {{ listing.title }}</h4></a>
+                              <h6>By: {{ listing.listing_type }}</h6>
+                              <h6>Area: {{ listing.area }}</h6>
+                              <ul class="rate">
+                                <li><i class="fa fa-star-o"></i></li>
+                                <li><i class="fa fa-star-o"></i></li>
+                                <li><i class="fa fa-star-o"></i></li>
+                                <li><i class="fa fa-star-o"></i></li>
+                                <li><i class="fa fa-star-o"></i></li>
+                                <li>({{ listing.reviews }}) Reviews</li>
+                              </ul>
+                              <span class="price">
+                                <div class="icon">
+                                  <img src="{% static 'images/listing-icon-01.png' %}" alt="">
+                                </div> ${{ listing.price }} / month with taxes
+                              </span>
+                              <span class="details">Location: <em>{{ listing.location }}</em></span>
+                              <div class="main-white-button">
+                                <a href="{% url 'ContactForm' %}"><i class="fa fa-eye"></i> Contact Now</a>
+                              </div>
+                            </div>
+                          </div>
+                          {% if forloop.counter|divisibleby:3 %}
+                            </div>
+                          {% endif %}
+                        {% endfor %}
+                    </div>
+                    </div>
+                  </li>
+
+
+                </ul>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
